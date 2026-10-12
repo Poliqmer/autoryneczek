@@ -13,28 +13,27 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Java
+      - name: Set up Java 21
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '21'
 
-      - name: Build mod
+      - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
 
-      - name: Run Gradle build
+      - name: Build mod
         run: |
-          if [ -f ./gradlew ]; then
-            chmod +x ./gradlew
-            ./gradlew build
+          if [ -f gradle/wrapper/gradle-wrapper.jar ] && [ -f gradle/wrapper/gradle-wrapper.properties ]; then
+            java -classpath gradle/wrapper/gradle-wrapper.jar org.gradle.wrapper.GradleWrapperMain build
           else
-            echo "Brak pliku gradlew — nie można zbudować projektu."
+            echo "Brakuje plików Gradle Wrapper."
             exit 1
           fi
 
       - name: Upload JAR
         uses: actions/upload-artifact@v4
         with:
-          name: minecraft-mod
-          path: '**/build/libs/*.jar'
+          name: anarchia-autorynek-1.21.11
+          path: build/libs/*.jar
           if-no-files-found: error
