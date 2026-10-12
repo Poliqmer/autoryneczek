@@ -1,0 +1,23 @@
+{
+	"schemaVersion": 1,
+	"id": "anarchia_autorynek",
+	"version": "${version}",
+	"name": "Anarchia AutoRynek",
+	"description": "Kliencki mod do automatycznego sprawdzania rynku i kupowania wybranych przedmiotów po cenie nieprzekraczającej ustawionego limitu. Menu: /autorynek.",
+	"authors": [
+		"Użytkownik"
+	],
+	"license": "MIT",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"pl.anarchia.autorynek.AutoRynekClient"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.19.3",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
